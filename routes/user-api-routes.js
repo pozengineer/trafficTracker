@@ -36,13 +36,19 @@ module.exports = function(app) {
   // POST route for saving a new post
   // POST route for saving a new todo. You can create a todo using the data on req.body
   app.post("/api/user", function (req, res) {
-    db.User.create(req.body).then(function () {
-      console.log("works")
+    let bodyResult = req.body;
+    console.log(bodyResult);
+    db.User.create({
+      user: req.body.user,
+      businessType: req.body.businessType,
+      lat: req.body.lat,
+      lon: req.body.lon
+    }).then(function () {
+      console.log("user created successfully");
       res.end();
     }).catch(function (err) {
       res.status(401).json(err)
     })
-
   });
 
   // DELETE route for deleting posts
@@ -53,6 +59,8 @@ module.exports = function(app) {
       }
     }).then(function(dbUser) {
       res.json(dbUser);
-    });
+    }).catch(function(error){
+      res.error(error)
+    })
   });
 };

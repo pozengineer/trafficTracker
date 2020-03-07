@@ -149,7 +149,9 @@ $(document).ready(function () {
     }
 
     $(document).on("click", "#submit", displayLatLon)
+
     function displayLatLon(event) {
+        event.preventDefault();
         business = $("#businessname").val().trim();
         type = $("#typeinput option:selected").val();
         console.log(newlat);
@@ -171,22 +173,33 @@ $(document).ready(function () {
         }
     }
     function postUserData(business, type, lat, lon) {
+        let userData = {
+            user: business,
+            businessType: type,
+            lat: lat,
+            lon: lon
+        }
+        $.post("/api/user", userData).then(data => {
+            console.log(data);
+            console.log("user created successfully");
+            location.reload();
+        });
         // User route for saving a new user data
-        $.ajax({
-            url: '/api/user',
-            type: 'POST',
-            data: {
-                user: business,
-                businessType: type,
-                lat: lat,
-                lon: lon
-            },
-            success: function (data) {
-                location.reload();
-            }
-        })
-
-    };
+        // $.ajax({
+        //     url: '/api/user',
+        //     type: 'POST',
+        //     data: {
+        //         user: business,
+        //         businessType: type,
+        //         lat: lat,
+        //         lon: lon
+        //     },
+        //     success: function (data) {
+        //         location.reload();
+        //         console.log("user created successfully");
+        //     }
+        // })
+    }
 
     /* global moment */
     // userContainer holds all of our users
@@ -204,7 +217,7 @@ $(document).ready(function () {
     var url = window.location.search;
     getUsers();
     // This function grabs posts from the database and updates the view
-    function getUsers(user) {
+    function getUsers() {
         $.get("/api/user", function (data) {
             console.log("user", data);
             users = data;

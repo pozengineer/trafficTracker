@@ -1,5 +1,4 @@
 var express = require("express")
-var bodyParser = require('body-parser')
 
 var app = express();
 
@@ -12,9 +11,6 @@ app.use(express.static("public/assets/images"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
 
 var exphbs = require("express-handlebars");
 
