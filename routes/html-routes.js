@@ -15,13 +15,13 @@ module.exports = function (app) {
   });
 
   app.get("/app", function(req, res) {
-    db.User.findAll({}).then(function (data) {
-      var hbsObject = {
-        users: data[0].dataValues
-      };
-      console.log(hbsObject);
-      res.render("index", hbsObject);
-    })
+    // db.User.findAll({}).then(function (data) {
+    //   var hbsObject = {
+    //     Users: data[0].dataValues
+    //   };
+    //   console.log(hbsObject);
+      res.render("index");
+    // })
   });
   
   // app.get("/app", function(req, res) {
