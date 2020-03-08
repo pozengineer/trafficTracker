@@ -20,12 +20,12 @@ module.exports = function (app) {
     //     Users: data[0].dataValues
     //   };
     //   console.log(hbsObject);
-      res.render("index");
+    //  res.render("index", hbsObject);
     // })
+    res.render("index");
   });
   
   // app.get("/app", function(req, res) {
   //   res.render("map");
   // });
-
 };
