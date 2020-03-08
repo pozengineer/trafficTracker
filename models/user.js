@@ -16,12 +16,12 @@ module.exports = function (sequelize, DataTypes) {
         },
         lat: {
             type: DataTypes.DOUBLE,
-            allowNull: false,
+            allowNull: false
         },
         lon: {
             type: DataTypes.DOUBLE,
-            allowNull: false,
-        },
+            allowNull: false
+        }
     });
 
     return User;

@@ -24,11 +24,11 @@ module.exports = function (sequelize, DataTypes) {
         },
         wgs84_latitude: {
             type: DataTypes.DOUBLE,
-            allowNull: false,
+            allowNull: false
         },
         wgs84_longitude: {
             type: DataTypes.DOUBLE,
-            allowNull: false,
+            allowNull: false
         }
     });
 
