@@ -1,6 +1,8 @@
 // Export routes for server.js to use.
 var path = require("path");
 var db = require("../models")
+const dotenv = require("dotenv");
+dotenv.config();
 
 // Routes
 // =============================================================
@@ -22,7 +24,13 @@ module.exports = function (app) {
     //   console.log(hbsObject);
     //  res.render("index", hbsObject);
     // })
-    res.render("index");
+    var hbsObject = [
+      {
+        apiKey: process.env.MAPS_APIKEY
+      }
+    ]
+    // console.log(hbsObject[0]);
+    res.render("index", hbsObject[0]);
   });
   
   // app.get("/app", function(req, res) {

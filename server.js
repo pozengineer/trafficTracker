@@ -4,7 +4,9 @@ var app = express();
 
 var PORT = process.env.PORT || 8080;
 
-var db = require("./models")
+var db = require("./models");
+// const dotenv = require("dotenv");
+// dotenv.config();
 
 app.use(express.static("public"));
 app.use(express.static("public/assets/images"));
